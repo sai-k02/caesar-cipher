@@ -1,12 +1,9 @@
-def main():
-	print(encryptVigenere("input"))
-
 '''
 https://pages.mtu.edu/~shene/NSF-4/Tutorial/VIG/Vig-Base.html
 
 
 IMPLEMENT VIGENERE CIPHER
-USING A Vigenere Tableau or Table 
+USING A Vigenere Tableau or Table
 X = PLAINTEXT CHAR
 Y = KEY CHAR
 
@@ -29,17 +26,49 @@ TWWNP ZOAAS WNUHZ BNWWG SNBVC SLYPM M
 
 '''
 
-def encryptVigenere(input: str, key: str) -> str:
-	return input
+# ENCRYPT FUNCTION
+import collections
+import string
+import sys
 
-# FUNCTION WILL GET THE CORRESPONDING LETTER BASED ON THE VIGENERE TABLEAU
-# USE TOENCRYPTCHAR FOR ROWS AND KEY FOR COLUMNS
-def getEncryptLetter(toEncryptChar: str, keyChar: str) -> str:
-	return toEncryptChar + keyChar % 26
 
-# USE decryptChar for the column in the row to look for and keyChar as the row to use 
-# FUNCTION WILL GET THE CORRESPONDING LETTER BASED ON THE VIGENERE TABLEAU
-def getDecryptLetter(decryptChar: str, keyChar: str) -> str:
-	return 
+def encryptCesar(input: str, key: int) -> str:
+    # DEFINE STRING TO CONTAIN ENCRYPTED STRING
+    encryptString = input
+
+    # DEFINE CHARACTERS TO ROTATE BY
+    upper = collections.deque(string.ascii_uppercase)
+    lower = collections.deque(string.ascii_lowercase)
+
+    upper.rotate(key)
+    lower.rotate(key)
+
+    # # ROTATE BOTH UPPER AND LOWER
+    upperRotatedString = ''.join(list(upper))
+    lowerRotatedString = ''.join(list(lower))
+
+    # # MAP EACH CHARACTER OF INPUT TO THE NEW CORRESPONDING CHARACTER
+    encryptString = encryptString.translate(str.maketrans(
+        string.ascii_uppercase, upperRotatedString))
+    encryptString = encryptString.translate(str.maketrans(
+        string.ascii_lowercase, lowerRotatedString))
+
+    return encryptString
+
+
+def decryptCesar(key: int):
+    decryptString = ""
+    return decryptString
+
+
+def main():
+    try:
+        inputString = sys.argv[1]
+        key = int(sys.argv[2])
+        encryptedString = encryptCesar(inputString, key)
+        print(encryptedString)
+    except:
+        print("usage: python encrypt.py <stringToEncrypt> <intKey>")
+
 
 main()
