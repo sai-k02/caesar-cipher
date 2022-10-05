@@ -18,20 +18,13 @@ def getLogString(action: str, message: str) -> str:
 
 # ENSURE CORRECT USAGE
 if (len(sys.argv) != 2):
-    print("usage: driver.py <output.txt>")
+    print("usage: logger.py <output.txt>")
     sys.exit(1)
 
 # OPEN FILE FOR APPEND MODE
-logFile = open(sys.argv[1], 'a')
-
-# LOG INITIAL
-logFile.write(getLogString("START", "Logging Started."))
-
-# DEFINE MODE
-stdin = sys.stdin.readline().rstrip()
-
-while (stdin != 'QUIT'):
-    if (stdin == 'QUIT'):
-        sys.exit(1)
-    logFile.write(stdin+'\n')
-    stdin = sys.stdin.readline().rstrip()
+with open(sys.argv[1], 'a') as logFile:
+    command = sys.stdin.readline().rstrip()
+    while (command != 'QUIT'):
+        message = sys.stdin.readline().rstrip()
+        logFile.write(getLogString(command, message))
+        command = sys.stdin.readline().rstrip()

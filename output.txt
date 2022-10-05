@@ -1,5 +1,0 @@
-2022-10-4 21:20 [START] Logging Started.
-hi
-hi
-2022-10-4 21:21 [START] Logging Started.
-2022-10-4 21:23 [START] Logging Started.
