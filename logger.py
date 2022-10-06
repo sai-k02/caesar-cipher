@@ -32,3 +32,4 @@ with open(sys.argv[1], 'a') as logFile:
         command = sys.stdin.readline().rstrip()
 
     logFile.write(getLogString('STOP', 'Logging Stopped.'))
+    sys.exit(0)
