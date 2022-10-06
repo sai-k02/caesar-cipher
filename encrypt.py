@@ -94,7 +94,8 @@ def process(passKey: dict, command: str, message: str, availableCommands: set):
                     message, len(passKey['key']))
             elif command == 'DECRYPT':
                 returnDict['RESULT'] = 'RESULT'
-                returnDict['MESSAGE'] = 'DECRYPTED'
+                returnDict['MESSAGE'] = decryptCesar(
+                    message, len(passKey['key']))
             elif command == 'PASSKEY':
                 passKey['key'] = message
                 returnDict['RESULT'] = 'RESULT'
