@@ -1,31 +1,3 @@
-'''
-https://pages.mtu.edu/~shene/NSF-4/Tutorial/VIG/Vig-Base.html
-
-
-IMPLEMENT VIGENERE CIPHER
-USING A Vigenere Tableau or Table
-X = PLAINTEXT CHAR
-Y = KEY CHAR
-
-[MATCH KEY TO LENGTH OF EACH WORD]
-
-MICHIGAN TECHNOLOGICAL UNIVERSITY
-HOUGHTON HOUGHTONHOUGH TONHOUGNTO
-
-
-[BROKEN DOWN INTO 5 LETTER BLOCKS]
-
-
-MICHI GANTE CHNOL OGICA LUNIV ERSIT Y
-HOUGH TONHO UGHTO NHOUG HTONH OUGHT O
-
-[USING TABLE]
-MICHI GANTE CHNOL OGICA LUNIV ERSIT Y
-HOUGH TONHO UGHTO NHOUG HTONH OUGHT O
-TWWNP ZOAAS WNUHZ BNWWG SNBVC SLYPM M
-
-'''
-
 # ENCRYPT FUNCTION
 import collections
 import string
@@ -40,8 +12,8 @@ def encryptCesar(input: str, key: int) -> str:
     upper = collections.deque(string.ascii_uppercase)
     lower = collections.deque(string.ascii_lowercase)
 
-    upper.rotate(key)
-    lower.rotate(key)
+    upper.rotate(key*-1)
+    lower.rotate(key*-1)
 
     # # ROTATE BOTH UPPER AND LOWER
     upperRotatedString = ''.join(list(upper))
@@ -64,8 +36,8 @@ def decryptCesar(input: str, key: int):
     upper = collections.deque(string.ascii_uppercase)
     lower = collections.deque(string.ascii_lowercase)
 
-    upper.rotate((-1)*key)
-    lower.rotate((-1)*key)
+    upper.rotate(key)
+    lower.rotate(key)
 
     # # ROTATE BOTH UPPER AND LOWER
     upperRotatedString = ''.join(list(upper))
@@ -81,7 +53,6 @@ def decryptCesar(input: str, key: int):
 
 
 def process(passKey: dict, command: str, message: str, availableCommands: set):
-
     # HANDLE INCORRECT COMMAND
 
     # DEFINE RETURN DICTIONARY
