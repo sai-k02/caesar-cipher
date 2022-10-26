@@ -1,0 +1,4 @@
+2022-10-26 0:32 [START] Logging Started.
+2022-10-26 0:32 [START]  Driver Started.
+2022-10-26 0:32 [STOP]  Driver STOP.
+2022-10-26 0:32 [STOP] Logging Stopped.

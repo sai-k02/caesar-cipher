@@ -90,17 +90,12 @@ async def main():
 
             if (command == 'password'):
                 # ASK USER FOR HISTORY
-
-                logger.stdin.write(
-                    bytes(command.upper()+'\n'+message+'\n', 'utf-8'))
                 encrypt.stdin.write(
                     bytes('PASSKEY\n'+message+'\n', 'utf-8'))
                 result = bytes.decode(await encrypt.stdout.readline()).rstrip()
                 if result != 'ERROR':
                     history[command].append(message)
                 message = bytes.decode(await encrypt.stdout.readline()).rstrip()
-                logger.stdin.write(
-                    bytes(result+'\n'+message+'\n', 'utf-8'))
 
             if (command == 'encrypt'):
 
